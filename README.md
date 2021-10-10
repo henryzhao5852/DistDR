@@ -70,16 +70,16 @@ Step 4: Run reader
 
 ```bash
 python train_reader.py \
-  --encoder_model_type hf_bert \
-  --pretrained_model_cfg bert-base-uncased \
-  --prediction_results_file={path to a file to write the results to} \
-  --eval_top_docs=[10,20,40,50,80,100] \
-  --dev_files={path to the retriever results file to evaluate, or path after running step 3 } \
-  --model_file= {path to the reader checkpoint} \
-  --train.dev_batch_size=80 \
-  --passages_per_question_predict=100 \
-  --dev_batch_size 8 \
-  --encoder.sequence_length 350
+  	--encoder_model_type hf_bert \
+  	--pretrained_model_cfg bert-base-uncased \
+  	--prediction_results_file={path to a file to write the results to} \
+  	--eval_top_docs=[10,20,40,50,80,100] \
+  	--dev_files={path to the retriever results file to evaluate, or path after running step 3 } \
+  	--model_file= {path to the reader checkpoint} \
+  	--train.dev_batch_size=80 \
+  	--passages_per_question_predict=100 \
+  	--dev_batch_size 8 \
+  	--encoder.sequence_length 350
 ```
 
 
@@ -121,8 +121,8 @@ Step 3: Get candidate positive passages that include gold answers
 
 ```bash
 python process/nq_positive_filter.py  \
---retrieval_input {path to retrieval output file} \
---out_file {path to output file} \
+	--retrieval_input {path to retrieval output file} \
+	--out_file {path to output file} \
 ```
 
 
@@ -133,16 +133,16 @@ Note: this step is a bit slow, we suggest splitting the data and run multiple pr
 
 ```bash
 python train_reader.py \
-  --encoder_model_type hf_bert \
-  --pretrained_model_cfg bert-base-uncased \
-  --prediction_results_file={path to a file to write the results to} \
-  --eval_top_docs=100 \
-  --dev_files={path to the retriever results file to evaluate, or path after running step 3 } \
-  --model_file= {path to the reader checkpoint} \
-  --train.dev_batch_size=80 \
-  --passages_per_question_predict=100 \
-  --dev_batch_size 8 \
-  --encoder.sequence_length 350
+	--encoder_model_type hf_bert \
+  	--pretrained_model_cfg bert-base-uncased \
+  	--prediction_results_file={path to a file to write the results to} \
+  	--eval_top_docs=100 \
+  	--dev_files={path to the retriever results file to evaluate, or path after running step 3 } \
+  	--model_file= {path to the reader checkpoint} \
+  	--train.dev_batch_size=80 \
+  	--passages_per_question_predict=100 \
+  	--dev_batch_size 8 \
+  	--encoder.sequence_length 350
 ```
 
 Step 5 Generate data for m-step 
@@ -150,9 +150,9 @@ Step 5 Generate data for m-step
 ```bash
 
 python process/nq_e_step_data.py \
---retrieval_input {path to retrieval output file} \
---reader_filter_input {path to reader filtered output file} \
---out_file {path to output file} \
+	--retrieval_input {path to retrieval output file} \
+	--reader_filter_input {path to reader filtered output file} \
+	--out_file {path to output file} \
 
 ```
 
@@ -382,8 +382,8 @@ Step 6: Get candidate positive passages that include gold answers
 
 ```bash
 python process/hotpot_positive_filter.py  \
---retrieval-input {path to retrieval output file from step 5} \
---out_file {path to output file} \
+	--retrieval-input {path to retrieval output file from step 5} \
+	--out_file {path to output file} \
 ```
 
 
@@ -394,16 +394,16 @@ Note: this step is a bit slow, we suggest splitting the data and run multiple pr
 
 ```bash
 python train_reader.py \
-  --encoder_model_type hf_bert \
-  --pretrained_model_cfg bert-base-uncased \
-  --prediction_results_file={path to a file to write the results to} \
-  --eval_top_docs=100 \
-  --dev_files={path to the retriever results file to evaluate} \
-  --model_file= {path to the reader checkpoint} \
-  --train.dev_batch_size=80 \
-  --passages_per_question_predict=100 \
-  --dev_batch_size 8 \
-  --encoder.sequence_length 350
+  	--encoder_model_type hf_bert \
+  	--pretrained_model_cfg bert-base-uncased \
+  	--prediction_results_file={path to a file to write the results to} \
+  	--eval_top_docs=100 \
+  	--dev_files={path to the retriever results file to evaluate} \
+  	--model_file= {path to the reader checkpoint} \
+  	--train.dev_batch_size=80 \
+  	--passages_per_question_predict=100 \
+  	--dev_batch_size 8 \
+  	--encoder.sequence_length 350
 ```
 
 Step 8: Generate data for m-step 
@@ -411,14 +411,14 @@ Step 8: Generate data for m-step
 ```bash
 
 python process/hotpot_e_step_data.py \
---retrieval-input {path to retrieval output file} \
---reader-filter-input {path to reader filtered output file} \
---first_step_retrieval {path to first step dense retrieval output file} \
---second_step_retrieval {path to second step dense retrieval output file} \
---qa_file {path to qa file} \
---passage_path {path to passage file} \
---out_first_step {path to first step output file} \
---out_second_step {path to second step output file} \
+	--retrieval-input {path to retrieval output file} \
+	--reader-filter-input {path to reader filtered output file} \
+	--first_step_retrieval {path to first step dense retrieval output file} \
+	--second_step_retrieval {path to second step dense retrieval output file} \
+	--qa_file {path to qa file} \
+	--passage_path {path to passage file} \
+	--out_first_step {path to first step output file} \
+	--out_second_step {path to second step output file} \
 
 ```
 
